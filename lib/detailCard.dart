@@ -10,6 +10,7 @@ import 'package:liveasy/widgets/loadingPointImageIcon.dart';
 import 'package:liveasy/widgets/priceButtonWidget.dart';
 import 'package:liveasy/widgets/truckImageWidget.dart';
 import 'package:liveasy/widgets/unloadingPointImageIcon.dart';
+import 'package:get/get.dart';
 
 class DetailCard extends StatelessWidget {
   String? productType;
@@ -39,7 +40,25 @@ class DetailCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       GestureDetector(onTap: (){
-        Navigator.push(
+       Get.to(()=>LoadDetailsScreen(
+         loadingPoint: "$loadingPoint",
+         unloadingPoint: "$unloadingPoint",
+         productType: "$productType",
+         truckType: "$truckType",
+         noOfTrucks: "$noOfTrucks",
+         weight: "$weight",
+         isPending: "$status" == 'pending'
+             ? true
+             : false,
+         comment: "$comment",
+         status: "$status",
+         isCommentsEmpty:
+         "$comment" == '' ? true : false,
+       ));
+
+
+
+        /*Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) =>
@@ -57,7 +76,7 @@ class DetailCard extends StatelessWidget {
                       status: "$status",
                       isCommentsEmpty:
                       "$comment" == '' ? true : false,
-                    )));
+                    )));*/
       },
         child: Card(
           elevation: 10,
