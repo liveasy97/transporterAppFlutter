@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: ^1.2.0
   pinput: ^1.2.0
   modal_progress_hud_alt: ^1.0.0
+  social_share: ^2.1.1
 
 dev_dependencies:
   flutter_config: ^2.0.0

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/spaces.dart';
+import 'package:liveasy/functions/getsCardDataFunction.dart';
 import 'package:liveasy/providerClass/providerData.dart';
 import 'package:liveasy/widgets/availableLoadsTextWidget.dart';
 import 'package:liveasy/widgets/cancelIconWidget.dart';
@@ -14,9 +15,8 @@ import 'package:liveasy/widgets/unloadingPointImageIcon.dart';
 import 'package:provider/provider.dart';
 import 'package:liveasy/widgets/addressInputWidget.dart';
 import 'package:liveasy/widgets/backButtonWidget.dart';
-import 'package:http/http.dart' as http;
 
-import '../cardsModal.dart';
+import '../loadScreenCardsModal.dart';
 import '../detailCard.dart';
 
 class FindLoadScreen extends StatefulWidget {
@@ -25,28 +25,6 @@ class FindLoadScreen extends StatefulWidget {
 }
 
 class _FindLoadScreenState extends State<FindLoadScreen> {
-  var jsonData;
-  List<LoadScreenCardsModal> card = [];
-
-  Future<List<LoadScreenCardsModal>> getCardsData() async {
-    http.Response response = await http.get(Uri.parse("http://52.53.40.46:8080/load"));
-    jsonData = json.decode(response.body);
-
-    for (var json in jsonData) {
-      LoadScreenCardsModal cardsModal = LoadScreenCardsModal();
-      cardsModal.loadingPoint = json["loadingPoint"];
-      cardsModal.unloadingPoint = json["unloadingPoint"];
-      cardsModal.productType = json["productType"];
-      cardsModal.truckType = json["truckType"];
-      cardsModal.noOfTrucks = json["noOfTrucks"];
-      cardsModal.weight = json["weight"];
-      cardsModal.comment = json["comment"];
-      cardsModal.status = json["status"];
-      card.add(cardsModal);
-    }
-    return card;
-  }
-
 
   TextEditingController controller1 = TextEditingController();
   TextEditingController controller2 = TextEditingController();
@@ -162,7 +140,7 @@ class _FindLoadScreenState extends State<FindLoadScreen> {
                               height: space_4-1,
                             ),
                             Container(
-                              height: 500, //TODO to be modified
+                              height: 430, //TODO to be modified
                               //alternative-(MediaQuery.of(context).size.height-(previous height))
                               child: ListView.builder(
                                 reverse: false,
@@ -174,13 +152,13 @@ class _FindLoadScreenState extends State<FindLoadScreen> {
                                   loadingPoint: snapshot.data[index].loadingPoint,
                                   unloadingPoint: snapshot.data[index].unloadingPoint,
                                   productType: snapshot.data[index].productType,
-                                  truckPreference: snapshot.data[index].truckType,
+                                  truckType: snapshot.data[index].truckType,
                                   noOfTrucks: snapshot.data[index].noOfTrucks,
                                   weight: snapshot.data[index].weight,
                                   isPending: snapshot.data[index].status == 'pending'
                                       ? true
                                       : false,
-                                  comments: snapshot.data[index].comment,
+                                  comment: snapshot.data[index].comment,
                                   isCommentsEmpty:
                                   snapshot.data[index].comment == '' ? true : false,
                                 ),

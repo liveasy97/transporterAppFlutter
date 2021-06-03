@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+const Color darkBlueColor = Color(0xFF152968);
 const Color grey = Color(0xFF828282);
 const Color blueTitleColor = Color(0xFF152968);
 const Color backgroundColor = Color(0xFFF5F5F5);
@@ -29,6 +29,9 @@ Color bidBackground = Color(0xFF152968);
 Color priceTextColor = Color(0xFF152968);
 Color loadingPointTextColor = Color(0xFF2A2E3B);
 Color unloadingPointTextColor = Color(0xFF2A2E3B);
+Color verifiedButtonColor = Color(0xFF84DBBB);
+Color locationLineColor = Color(0xFFAFAFAF);
+Color shareButtonColor = Color(0xFF09B778);
 //dont make this const
 dynamic activeButtonColor = MaterialStateProperty.all<Color>(Color(0xff33364D));
 dynamic deactiveButtonColor = MaterialStateProperty.all<Color>(Colors.grey);

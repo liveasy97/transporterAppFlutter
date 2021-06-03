@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.liveasy.liveasy"
     android:installLocation="auto"
     android:versionCode="100"
@@ -12,6 +13,16 @@
    <application
         android:label="liveasy"
         android:icon="@mipmap/ic_launcher">
+       <provider
+           android:name="androidx.core.content.FileProvider"
+           android:authorities="${applicationId}.com.shekarmudaliyar.social_share"
+           android:exported="false"
+           android:grantUriPermissions="true"
+           tools:replace="android:authorities">
+           <meta-data
+               android:name="android.support.FILE_PROVIDER_PATHS"
+               android:resource="@xml/filepaths" />
+       </provider>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -9,7 +9,7 @@ class TruckImageWidget extends StatelessWidget {
         fit: BoxFit.cover,
         height: 138.18,
         width: 117,
-        image: AssetImage("assets/truckLoadImage.png"),
+        image: AssetImage("assets/images/truckLoadImage.png"),
       ),
     );
   }
