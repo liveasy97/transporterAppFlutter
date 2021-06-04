@@ -32,6 +32,7 @@ Color unloadingPointTextColor = Color(0xFF2A2E3B);
 Color verifiedButtonColor = Color(0xFF84DBBB);
 Color locationLineColor = Color(0xFFAFAFAF);
 Color shareButtonColor = Color(0xFF09B778);
+Color whiteButtonOutlineColor = Color(0xFF152968);
 //dont make this const
 dynamic activeButtonColor = MaterialStateProperty.all<Color>(Color(0xff33364D));
 dynamic deactiveButtonColor = MaterialStateProperty.all<Color>(Colors.grey);

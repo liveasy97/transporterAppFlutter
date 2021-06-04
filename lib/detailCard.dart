@@ -56,27 +56,6 @@ class DetailCard extends StatelessWidget {
          "$comment" == '' ? true : false,
        ));
 
-
-
-        /*Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    LoadDetailsScreen(
-                      loadingPoint: "$loadingPoint",
-                      unloadingPoint: "$unloadingPoint",
-                      productType: "$productType",
-                      truckType: "$truckType",
-                      noOfTrucks: "$noOfTrucks",
-                      weight: "$weight",
-                      isPending: "$status" == 'pending'
-                          ? true
-                          : false,
-                      comment: "$comment",
-                      status: "$status",
-                      isCommentsEmpty:
-                      "$comment" == '' ? true : false,
-                    )));*/
       },
         child: Card(
           elevation: 10,
