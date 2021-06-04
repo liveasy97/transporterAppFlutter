@@ -5,7 +5,10 @@ import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
 import 'package:liveasy/widgets/bidButtonSendRequest.dart';
 import 'package:liveasy/widgets/cancelButton.dart';
-
+Color color_Unselected = Colors.white;
+Color color_Selected = priceBackground;
+Color color_1 = color_Unselected;
+Color color_2 = color_Unselected;
 class BidButtonWidget extends StatefulWidget {
 
   @override
@@ -13,8 +16,18 @@ class BidButtonWidget extends StatefulWidget {
 }
 
 class _BidButtonWidgetState extends State<BidButtonWidget> {
-  bool temp = true;
 
+
+  void onPressButtonColorChange(int cardNumber) {
+    if (cardNumber == 1 && color_1 == color_Unselected) {
+      color_1 = color_Selected;
+      color_2 = color_Unselected;
+
+    } else if (cardNumber == 2 && color_2 == color_Unselected) {
+      color_2 = color_Selected;
+      color_1 = color_Unselected;
+
+    }}
   Future<void> showInformationDialog(BuildContext context) async {
     return await showDialog(
         context: context,
@@ -29,9 +42,7 @@ class _BidButtonWidgetState extends State<BidButtonWidget> {
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextButton(style: ButtonStyle(
-                        backgroundColor: temp ? MaterialStateProperty.all(
-                            priceBackground) : MaterialStateProperty.all(
-                            white)),
+                        backgroundColor:  MaterialStateProperty.all(priceBackground)),
                       child: Text(
                         "Per Truck",
                         style: TextStyle(
@@ -40,15 +51,13 @@ class _BidButtonWidgetState extends State<BidButtonWidget> {
                             color: darkBlueColor),
                       ),
                       onPressed:(){
-                      setState(() {
-                        temp=true;
-                      });
+                        setState(() {
+                          onPressButtonColorChange(CardNumber);
+                        });
                       },
                     ),
                     TextButton(style: ButtonStyle(
-                        backgroundColor: temp ? MaterialStateProperty.all(
-                            white) : MaterialStateProperty.all(
-                            priceBackground)),
+                        backgroundColor: MaterialStateProperty.all(priceBackground) ),
                       child: Text(
                         "Per Tonne",
                         style: TextStyle(
@@ -58,7 +67,7 @@ class _BidButtonWidgetState extends State<BidButtonWidget> {
                       ),
                       onPressed:(){
                         setState(() {
-                          temp=false;
+                          onPressButtonColorChange(CardNumber);
                         });
                       },
                     )
