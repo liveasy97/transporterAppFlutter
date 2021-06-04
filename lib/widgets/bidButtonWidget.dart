@@ -5,10 +5,7 @@ import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
 import 'package:liveasy/widgets/bidButtonSendRequest.dart';
 import 'package:liveasy/widgets/cancelButton.dart';
-Color color_Unselected = Colors.white;
-Color color_Selected = priceBackground;
-Color color_1 = color_Unselected;
-Color color_2 = color_Unselected;
+
 class BidButtonWidget extends StatefulWidget {
 
   @override
@@ -16,86 +13,82 @@ class BidButtonWidget extends StatefulWidget {
 }
 
 class _BidButtonWidgetState extends State<BidButtonWidget> {
+  bool temp = true;
 
-
-  void onPressButtonColorChange(int cardNumber) {
-    if (cardNumber == 1 && color_1 == color_Unselected) {
-      color_1 = color_Selected;
-      color_2 = color_Unselected;
-
-    } else if (cardNumber == 2 && color_2 == color_Unselected) {
-      color_2 = color_Selected;
-      color_1 = color_Unselected;
-
-    }}
   Future<void> showInformationDialog(BuildContext context) async {
     return await showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
-            title: Text(
-              "Please enter your rate",
-              style: TextStyle(fontSize: size_9, fontWeight: normalWeight),
-            ),
-            content: Column(
-              children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(style: ButtonStyle(
-                        backgroundColor:  MaterialStateProperty.all(priceBackground)),
-                      child: Text(
-                        "Per Truck",
-                        style: TextStyle(
-                            fontWeight: mediumBoldWeight,
-                            fontSize: size_7,
-                            color: darkBlueColor),
+          return StatefulBuilder(builder: (context,setState){
+           return AlertDialog(
+              title: Text(
+                "Please enter your rate",
+                style: TextStyle(fontSize: size_9, fontWeight: normalWeight),
+              ),
+              content: Column(mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(style: ButtonStyle(
+                          backgroundColor: temp ? MaterialStateProperty.all(
+                              priceBackground) : MaterialStateProperty.all(
+                              white)),
+                        child: Text(
+                          "Per Truck",
+                          style: TextStyle(
+                              fontWeight: mediumBoldWeight,
+                              fontSize: size_7,
+                              color: darkBlueColor),
+                        ),
+                        onPressed:(){
+                          setState(() {
+                            temp=true;
+                          });
+                        },
                       ),
-                      onPressed:(){
-                        setState(() {
-                          onPressButtonColorChange(CardNumber);
-                        });
-                      },
-                    ),
-                    TextButton(style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(priceBackground) ),
-                      child: Text(
-                        "Per Tonne",
-                        style: TextStyle(
-                            fontWeight: mediumBoldWeight,
-                            fontSize: size_7,
-                            color: darkBlueColor),
-                      ),
-                      onPressed:(){
-                        setState(() {
-                          onPressButtonColorChange(CardNumber);
-                        });
-                      },
-                    )
-                  ],
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
-                      border: Border.all(color: Color(0xFF878787))),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Eg 4000",
-                        hintStyle: TextStyle(color: Color(0xFF979797)),
-                        border: InputBorder.none,
+                      TextButton(style: ButtonStyle(
+                          backgroundColor: temp ? MaterialStateProperty.all(
+                              white) : MaterialStateProperty.all(
+                              priceBackground)),
+                        child: Text(
+                          "Per Tonne",
+                          style: TextStyle(
+                              fontWeight: mediumBoldWeight,
+                              fontSize: size_7,
+                              color: darkBlueColor),
+                        ),
+                        onPressed:(){
+                          setState(() {
+                            temp=false;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(22),
+                        border: Border.all(color: Color(0xFF878787))),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Eg 4000",
+                          hintStyle: TextStyle(color: Color(0xFF979797)),
+                          border: InputBorder.none,
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
+              ),
+              actions: [
+                Row(
+                  children: [BidButtonSendRequest(), CancelButton()],
+                )
               ],
-            ),
-            actions: [
-              Row(
-                children: [BidButtonSendRequest(), CancelButton()],
-              )
-            ],
-          );
+            );
+          });
         });
   }
 
