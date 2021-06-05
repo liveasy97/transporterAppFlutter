@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
+import 'package:liveasy/constants/spaces.dart';
 class BidButtonSendRequest extends StatelessWidget {
 
   @override
@@ -12,9 +13,9 @@ class BidButtonSendRequest extends StatelessWidget {
         Get.back();
       },
       child: Container(
-        margin: EdgeInsets.only(right: 15),
-        height: 31,
-        width: 80,
+        margin: EdgeInsets.only(right: space_3),
+        height: space_6+1,
+        width: space_16,
         decoration: BoxDecoration(
             color: bidBackground, borderRadius: BorderRadius.circular(20)),
         child: Center(
