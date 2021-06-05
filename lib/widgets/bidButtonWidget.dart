@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
+import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/widgets/bidButtonSendRequest.dart';
 import 'package:liveasy/widgets/cancelButton.dart';
 
@@ -20,74 +21,92 @@ class _BidButtonWidgetState extends State<BidButtonWidget> {
         context: context,
         builder: (context) {
           return StatefulBuilder(builder: (context,setState){
-           return AlertDialog(
-              title: Text(
-                "Please enter your rate",
-                style: TextStyle(fontSize: size_9, fontWeight: normalWeight),
-              ),
-              content: Column(mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+           return ListView(physics: NeverScrollableScrollPhysics(),
+             children: [
+               AlertDialog(
+                  title: Text(
+                    "Please enter your rate",
+                    style: TextStyle(fontSize: size_9, fontWeight: normalWeight),
+                  ),
+                  content: Column(mainAxisSize: MainAxisSize.min,
                     children: [
-                      TextButton(style: ButtonStyle(
-                          backgroundColor: temp ? MaterialStateProperty.all(
-                              priceBackground) : MaterialStateProperty.all(
-                              white)),
-                        child: Text(
-                          "Per Truck",
-                          style: TextStyle(
-                              fontWeight: mediumBoldWeight,
-                              fontSize: size_7,
-                              color: darkBlueColor),
-                        ),
-                        onPressed:(){
-                          setState(() {
-                            temp=true;
-                          });
-                        },
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          TextButton(style: ButtonStyle(
+                              backgroundColor: temp ? MaterialStateProperty.all(
+                                  priceBackground) : MaterialStateProperty.all(
+                                  white)),
+                            child: Padding(
+                              padding:  EdgeInsets.symmetric(horizontal: space_3,),
+                              child: Text(
+                                "Per Truck",
+                                style: TextStyle(
+                                    fontWeight: mediumBoldWeight,
+                                    fontSize: size_7,
+                                    color: darkBlueColor),
+                              ),
+                            ),
+                            onPressed:(){
+                              setState(() {
+                                temp=true;
+                              });
+                            },
+                          ),
+                          TextButton(style: ButtonStyle(
+                              backgroundColor: temp ? MaterialStateProperty.all(
+                                  white) : MaterialStateProperty.all(
+                                  priceBackground)),
+                            child: Padding(
+                              padding:EdgeInsets.symmetric(horizontal: space_3,),
+                              child: Text(
+                                "Per Tonne",
+                                style: TextStyle(
+                                    fontWeight: mediumBoldWeight,
+                                    fontSize: size_7,
+                                    color: darkBlueColor),
+                              ),
+                            ),
+                            onPressed:(){
+                              setState(() {
+                                temp=false;
+                              });
+                            },
+                          )
+                        ],
                       ),
-                      TextButton(style: ButtonStyle(
-                          backgroundColor: temp ? MaterialStateProperty.all(
-                              white) : MaterialStateProperty.all(
-                              priceBackground)),
-                        child: Text(
-                          "Per Tonne",
-                          style: TextStyle(
-                              fontWeight: mediumBoldWeight,
-                              fontSize: size_7,
-                              color: darkBlueColor),
+                      Container(height: 37,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(22),
+                            border: Border.all(color: Color(0xFF878787))),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8.0,),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "Eg 4000",
+                              hintStyle: TextStyle(color: Color(0xFF979797)),
+                              border: InputBorder.none,
+                            ),
+                          ),
                         ),
-                        onPressed:(){
-                          setState(() {
-                            temp=false;
-                          });
-                        },
-                      )
+                      ),
                     ],
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(22),
-                        border: Border.all(color: Color(0xFF878787))),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Eg 4000",
-                          hintStyle: TextStyle(color: Color(0xFF979797)),
-                          border: InputBorder.none,
-                        ),
+                  actions: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 86.0,bottom: 22.0),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                        children: [BidButtonSendRequest(), CancelButton()],
                       ),
-                    ),
-                  ),
-                ],
-              ),
-              actions: [
-                Row(
-                  children: [BidButtonSendRequest(), CancelButton()],
-                )
-              ],
-            );
+                    )
+                  ],
+                shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),),
+                 insetPadding: EdgeInsets.symmetric(vertical: 240.0,horizontal: 20.0),
+                ),
+             ],
+           );
           });
         });
   }
