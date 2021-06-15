@@ -1,0 +1,79 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Web related
+lib/generated_plugin_registrant.dart
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+#
+# Android Studio will place build artifacts here
+#/android/app/debug
+#/android/app/profile
+#/android/app/release
+#.metadata
+#android/app/src/main/res/drawable-v21/launch_background.xml
+#android/app/src/main/res/drawable/launch_background.xml
+#android/app/src/main/res/values-night/styles.xml
+#android/app/src/main/res/values/styles.xml
+#android/gradle/wrapper/gradle-wrapper.properties
+#android/settings.gradle
+#ios/Flutter/AppFrameworkInfo.plist
+#ios/Flutter/Debug.xcconfig
+#ios/Flutter/Release.xcconfig
+#ios/Runner.xcodeproj/project.pbxproj
+#ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+#ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+#ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+#ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme
+#ios/Runner.xcworkspace/contents.xcworkspacedata
+#ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+#ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+#ios/Runner/AppDelegate.swift
+#ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json
+#ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json
+#ios/Runner/Base.lproj/LaunchScreen.storyboard
+#ios/Runner/Base.lproj/Main.storyboard
+#ios/Runner/Info.plist
+#ios/Runner/Runner-Bridging-Header.h
+#pubspec.lock
+#test/widget_test.dart
+#web/index.html
+#web/manifest.json
+.env
+
+
+
