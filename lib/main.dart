@@ -29,11 +29,13 @@ class MyApp extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.done) {
               if (FirebaseAuth.instance.currentUser == null) {
                 return GetMaterialApp(
+                  themeMode: ThemeMode.system,
                   theme: ThemeData(fontFamily: "montserrat"),
                   home: SplashScreen(),
                 );
               } else {
                 return GetMaterialApp(
+                  themeMode: ThemeMode.system,
                   theme: ThemeData(fontFamily: "montserrat"),
                   home: SplashScreenToGetTransporterData(
                     mobileNum: FirebaseAuth.instance.currentUser.phoneNumber

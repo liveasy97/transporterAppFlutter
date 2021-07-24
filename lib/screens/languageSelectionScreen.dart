@@ -107,6 +107,11 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                                           fontWeight: normalWeight),
                                     ),
                                   ),
+                                  Image(
+                                    image: AssetImage("assets/icons/tick.png"),
+                                    width: space_3,
+                                    height: space_3,
+                                  )
                                 ],
                               ),
                             ),
