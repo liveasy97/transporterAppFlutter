@@ -11,6 +11,14 @@ import 'package:liveasy/translations/l10n.dart';
 //This is effective way for maintenance of code for long term.
 //P.S Care should be taken that provider should only be used for updating variables and not processing their values.
 
+
+// enum class for language selection
+enum LanguageItem{
+  English,
+  Hindi
+}
+
+
 class ProviderData extends ChangeNotifier {
   bool bidButtonSendRequestState = false;
 
@@ -564,6 +572,18 @@ class ProviderData extends ChangeNotifier {
   void clearLocale() {
   _locale = null;
   notifyListeners();
+  }
+
+// ------------------------------------------------
+  // Language selection provider
+
+  LanguageItem _languageItem = LanguageItem.English;
+
+  LanguageItem get languageItem => _languageItem;
+
+  void setLanguageItem(LanguageItem languageItems){
+    _languageItem = languageItems;
+    notifyListeners();
   }
 
 

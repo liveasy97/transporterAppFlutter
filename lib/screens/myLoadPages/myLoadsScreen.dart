@@ -82,6 +82,7 @@ class _MyLoadsScreenState extends State<MyLoadsScreen> {
                     ),
                   )
                 : ListView.builder(
+                    padding: EdgeInsets.only(bottom: space_15),
                     controller: scrollController,
                     itemCount: myLoadList.length,
                     itemBuilder: (context, index) {

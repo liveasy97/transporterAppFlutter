@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 
 Future<String?> postBidAPi(loadId, rate, transporterIdController, unit) async {
   String now = DateFormat("dd-MM-yyyy").format(DateTime.now());
+  var jsondata;
 
   if (unit == "RadioButtonOptions.PER_TON") {
     unit = "PER_TON";
@@ -30,15 +31,17 @@ Future<String?> postBidAPi(loadId, rate, transporterIdController, unit) async {
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: body);
-    print(response.body);
+    jsondata = json.decode(response.body);
     if (response.statusCode == 201) {
       return "success";
     } else if (response.statusCode == 409) {
+      print(jsondata);
+      print(
+          "print error in bid conflict===>${jsondata["apierror"]["message"]}");
       return "conflict";
     }
     return "unsuccessful";
   } catch (e) {
-    print(e.toString());
     return e.toString();
   }
 }

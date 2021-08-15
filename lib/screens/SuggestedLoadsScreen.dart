@@ -5,6 +5,7 @@ import 'package:liveasy/functions/loadApis/runSuggestedLoadApiWithPageNo.dart';
 import 'package:liveasy/models/loadDetailsScreenModel.dart';
 import 'package:liveasy/widgets/Header.dart';
 import 'package:liveasy/widgets/buttons/filterButton.dart';
+import 'package:liveasy/widgets/loadingWidgets/bottomProgressBarIndicatorWidget.dart';
 import 'package:liveasy/widgets/loadingWidgets/onGoingLoadingWidgets.dart';
 import 'package:liveasy/widgets/suggestedLoadsCard.dart';
 
@@ -84,16 +85,19 @@ class _SuggestedLoadScreenState extends State<SuggestedLoadScreen> {
               ),
               Container(
                 // height: (MediaQuery.of(context).size.height),
-                height:  MediaQuery.of(context).size.height -  kBottomNavigationBarHeight - space_6,
+                height: MediaQuery.of(context).size.height -
+                    kBottomNavigationBarHeight -
+                    space_6,
                 color: backgroundColor,
                 child: loading == true
                     ? OnGoingLoadingWidgets()
                     : ListView.builder(
                         controller: scrollController,
-                        itemCount: data.length,
-                        itemBuilder: (BuildContext context, index) =>
-                            SuggestedLoadsCard(
-                          loadDetailsScreenModel: data[index],
+                        itemCount: data.length+1,
+                        itemBuilder: (BuildContext context, index) => index == data.length
+                            ? Container(child: bottomProgressBarIndicatorWidget(),
+                                  margin: EdgeInsets.only(bottom: space_2),)
+                            : SuggestedLoadsCard(loadDetailsScreenModel: data[index],
                         ),
                       ),
               ),

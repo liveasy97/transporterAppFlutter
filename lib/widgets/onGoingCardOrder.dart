@@ -4,6 +4,7 @@ import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
 import 'package:liveasy/constants/spaces.dart';
+import 'package:liveasy/functions/textOverFlow.dart';
 import 'package:liveasy/widgets/LoadEndPointTemplate.dart';
 import 'package:get/get.dart';
 import 'buttons/callButton.dart';
@@ -153,7 +154,7 @@ class OngoingCardOrders extends StatelessWidget {
                                         'assets/icons/buildingIcon.png')),
                               ),
                               Text(
-                                companyName,
+                                textOverflowEllipsis(companyName, 20),
                                 style: TextStyle(
                                   color: liveasyBlackColor,
                                   fontWeight: mediumBoldWeight,

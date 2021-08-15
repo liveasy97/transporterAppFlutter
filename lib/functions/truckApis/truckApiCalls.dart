@@ -29,7 +29,6 @@ class TruckApiCalls {
 //GET---------------------------------------------------------------------------
 
   Future<List<TruckModel>> getTruckData() async {
-
     for (int i = 0;; i++) {
       http.Response response = await http.get(Uri.parse(truckApiUrl +
           '?transporterId=${transporterIdController.transporterId.value}&pageNo=$i'));
@@ -48,7 +47,7 @@ class TruckApiCalls {
         truckModel.passingWeight = json["passingWeight"];
         truckModel.truckType = json["truckType"];
         truckModel.driverId = json["driverId"];
-        truckModel.tyres = json["tyres"];
+        truckModel.tyres = json["tyres"].toString();
         truckDataList.add(truckModel);
       }
     }
@@ -57,7 +56,6 @@ class TruckApiCalls {
 
   //GET Truck Data by truckId
   Future<Map> getDataByTruckId(String truckId) async {
-
     http.Response response = await http.get(Uri.parse('$truckApiUrl/$truckId'));
     var jsonData = json.decode(response.body);
 
@@ -65,7 +63,7 @@ class TruckApiCalls {
       'driverId': jsonData['driverId'] != null ? jsonData['driverId'] : 'NA',
       'truckNo': jsonData['truckNo'] != null ? jsonData['truckNo'] : 'NA',
       'imei': jsonData['imei'] != null ? jsonData['imei'] : 'NA',
-      'truckType' : jsonData['truckType'] != null ? jsonData['truckType'] : 'NA',
+      'truckType': jsonData['truckType'] != null ? jsonData['truckType'] : 'NA',
     };
 
     return data;
@@ -73,7 +71,6 @@ class TruckApiCalls {
 
   //POST------------------------------------------------------------------------
   Future<String?> postTruckData({required String truckNo}) async {
-
     // json map
     Map<String, dynamic> data = {
       "transporterId": transporterIdController.transporterId.value,
@@ -90,8 +87,6 @@ class TruckApiCalls {
         body: body);
 
     var returnData = json.decode(response.body);
-
-
 
     _truckId = returnData['truckId'];
 
@@ -133,8 +128,7 @@ class TruckApiCalls {
   }
 
   updateDriverIdForTruck(
-      {required String truckID,
-        required String driverID}) async {
+      {required String truckID, required String driverID}) async {
     //json map
     Map<String, dynamic> data = {
       "driverId": driverID == '' ? null : driverID,
@@ -150,7 +144,5 @@ class TruckApiCalls {
 
     var returnData = json.decode(response.body);
     _truckId = returnData['truckId'];
-
   }
-
 } //class end

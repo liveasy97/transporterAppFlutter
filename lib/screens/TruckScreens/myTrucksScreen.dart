@@ -12,7 +12,6 @@ import 'package:liveasy/widgets/alertDialog/nextUpdateAlertDialog.dart';
 import 'package:liveasy/widgets/buttons/addTruckButton.dart';
 import 'package:liveasy/widgets/headingTextWidget.dart';
 import 'package:liveasy/widgets/buttons/helpButton.dart';
-import 'package:liveasy/widgets/loadingWidget.dart';
 import 'package:liveasy/widgets/loadingWidgets/truckLoadingWidgets.dart';
 import 'package:liveasy/widgets/myTrucksCard.dart';
 import 'package:liveasy/widgets/searchLoadWidget.dart';
@@ -133,6 +132,7 @@ class _MyTrucksState extends State<MyTrucks> {
                               ),
                             )
                           : ListView.builder(
+                              padding: EdgeInsets.only(bottom: space_15),
                               controller: scrollController,
                               itemCount: truckDataList.length,
                               itemBuilder: (context, index) {

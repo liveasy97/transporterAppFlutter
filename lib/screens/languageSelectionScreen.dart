@@ -21,7 +21,9 @@ class LanguageSelectionScreen extends StatefulWidget {
 class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProviderData>(context, listen: false);
+
+    final provider = Provider.of<ProviderData>(context);
+    final currentItem = provider.languageItem;
     return Scaffold(
       backgroundColor: white,
       body: Padding(
@@ -62,13 +64,14 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
+                                selectLanguageItem(context, LanguageItem.English);
                                 provider.setLocale(Locale('en'));
                               },
                               child: Container(
                                 height: space_8,
                                 decoration: BoxDecoration(
                                     border: Border.all(width: 1,
-                                        color:navy
+                                        color:currentItem == LanguageItem.English ? navy : darkGreyColor
                                     ),
                                     borderRadius:
                                         BorderRadius.circular(radius_1)),
@@ -79,14 +82,16 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                                     Text(
                                       "English",
                                       style: TextStyle(
-                                          color: navy,
+                                          color: currentItem == LanguageItem.English ? navy : darkGreyColor,
                                           fontSize: size_9,
                                           fontWeight: normalWeight),
                                     ),
-                                    Image(
-                                      image: AssetImage("assets/icons/tick.png"),
-                                      width: space_3,
-                                      height: space_3,
+                                    Container(
+                                      child: currentItem == LanguageItem.English? Image(
+                                        image: AssetImage("assets/icons/tick.png"),
+                                        width: space_3,
+                                        height: space_3,
+                                      ): Container(),
                                     )
                                   ],
                                 ),
@@ -99,27 +104,35 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                provider.setLocale(Locale('hi'));
+                                  selectLanguageItem(context, LanguageItem.Hindi);
+                                  provider.setLocale(Locale('hi'));
                               },
                               child: Container(
                                 height: space_8,
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                        width: 1, color: darkGreyColor),
+                                        width: 1,
+                                        color: currentItem == LanguageItem.Hindi ? navy : darkGreyColor
+                                    ),
                                     borderRadius:
                                         BorderRadius.circular(radius_1)),
                                 child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(left: space_2),
-                                      child: Text(
-                                        "Hindi",
-                                        style: TextStyle(
-                                            color: darkGreyColor,
-                                            fontSize: size_9,
-                                            fontWeight: normalWeight),
-                                      ),
+                                    Text(
+                                      "Hindi",
+                                      style: TextStyle(
+                                          color: currentItem == LanguageItem.Hindi ? navy : darkGreyColor,
+                                          fontSize: size_9,
+                                          fontWeight: normalWeight),
                                     ),
+                                Container(
+                                  child: currentItem == LanguageItem.Hindi ? Image(
+                                    image: AssetImage("assets/icons/tick.png"),
+                                    width: space_3,
+                                    height: space_3,
+                                  ): Container(),),
                                   ],
                                 ),
                               ),
@@ -144,5 +157,10 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
         ),
       ),
     );
+  }
+
+  void selectLanguageItem(BuildContext context, LanguageItem item) {
+    final provider = Provider.of<ProviderData>(context, listen: false);
+    provider.setLanguageItem(item);
   }
 }

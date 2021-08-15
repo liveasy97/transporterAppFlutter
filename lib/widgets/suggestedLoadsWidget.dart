@@ -14,6 +14,7 @@ import 'package:liveasy/models/loadPosterModel.dart';
 import 'package:liveasy/screens/SuggestedLoadsScreen.dart';
 import 'package:liveasy/widgets/homeScreenLoadsCard.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:liveasy/widgets/loadingWidgets/bottomProgressBarIndicatorWidget.dart';
 
 // ignore: must_be_immutable
 class SuggestedLoadsWidget extends StatefulWidget {
@@ -73,9 +74,10 @@ class _SuggestedLoadsWidgetState extends State<SuggestedLoadsWidget> {
         : ListView.builder(
           controller: scrollController,
           scrollDirection: Axis.vertical,
-          itemCount: data.length,
-          itemBuilder: (context, index) => HomeScreenLoadsCard(
-            loadDetailsScreenModel: data[index],
+          itemCount: data.length +1,
+          itemBuilder: (context, index) => index == data.length
+              ? bottomProgressBarIndicatorWidget()
+              : HomeScreenLoadsCard(loadDetailsScreenModel: data[index],
           ),
         );
   }

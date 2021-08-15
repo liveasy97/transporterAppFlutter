@@ -71,23 +71,26 @@ class _AddDriverAlertDialogState extends State<AddDriverAlertDialog> {
                       onTap: () async {
                         print(driverNameController.text);
                         print(driverNumberController.text);
+
+                        // if (await Permission.contacts.request().isGranted) {
+
                         final PhoneContact contact =
                             await FlutterContactPicker.pickPhoneContact(
                                 askForPermission: true);
                         print("picked contact: $contact");
+
                         setState(() {
                           String contactName = contact.fullName.toString();
                           driverNameController =
                               TextEditingController(text: contactName);
-                          // as the number can have +91 and also may not have +91 in start
+
                           String contactNumber =
                               contact.phoneNumber!.number!.contains("+91")
                                   ? contact.phoneNumber!.number!
                                       .replaceRange(0, 3, "")
                                       .replaceAll(new RegExp(r"\D"), "")
-                                  : contact.phoneNumber!.number!
-                                      .toString()
-                                      .replaceAll(new RegExp(r"\D"), "");
+                                  : contact.phoneNumber!.number!.toString();
+
                           driverNumberController =
                               TextEditingController(text: contactNumber);
                         });
@@ -124,9 +127,11 @@ class _AddDriverAlertDialogState extends State<AddDriverAlertDialog> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: space_2),
               child: TextField(
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(10),
+                ],
                 controller: driverNumberController,
                 keyboardType: TextInputType.phone,
-                inputFormatters: [LengthLimitingTextInputFormatter(10)],
                 decoration: InputDecoration(
                   hintText: "Type here",
                   hintStyle: TextStyle(
@@ -161,6 +166,7 @@ class _AddDriverAlertDialogState extends State<AddDriverAlertDialog> {
                   if (response != null) {
                     if (response.statusCode == 201 && response.id != null) {
                       // driver added successfully
+                      Navigator.of(context).pop();
                       Navigator.of(context).pop();
                       //For Book Now Alert Dialog
                       await getTruckDetailsFromTruckApi(context);
