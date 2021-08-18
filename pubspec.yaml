@@ -37,6 +37,7 @@ dependencies:
   geocoding: ^2.0.0
   location_permissions: ^4.0.0
   provider: ^5.0.0
+  permission_handler: ^8.1.4+2
   google_maps_flutter: ^2.0.6
   flutter_polyline_points: ^1.0.0
   flutter_spinkit: ^5.0.0

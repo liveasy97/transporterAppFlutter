@@ -13,6 +13,7 @@ import 'package:liveasy/screens/home.dart';
 import 'package:liveasy/widgets/bottomNavigationIconWidget.dart';
 import 'package:provider/provider.dart';
 import 'TruckScreens/myTrucksScreen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavigationScreen extends StatefulWidget {
   @override
@@ -94,7 +95,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
             activeIcon: BottomNavigationIconWidget(
               iconPath: "activeHomeIcon.png",
             ),
-            label: ("Home"),
+            label: (AppLocalizations.of(context)!.home),
           ),
           BottomNavigationBarItem(
             icon: BottomNavigationIconWidget(
@@ -103,7 +104,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
             activeIcon: BottomNavigationIconWidget(
               iconPath: "activeMyTrucksIcon.png",
             ),
-            label: ("My Trucks"),
+            label: (AppLocalizations.of(context)!.my_truck),
           ),
           BottomNavigationBarItem(
             icon: BottomNavigationIconWidget(
@@ -112,7 +113,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
             activeIcon: BottomNavigationIconWidget(
               iconPath: "activePostLoadIcon.png",
             ),
-            label: ("My Loads"),
+            label: (AppLocalizations.of(context)!.my_loads),
           ),
           BottomNavigationBarItem(
             icon: BottomNavigationIconWidget(
@@ -130,7 +131,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
             activeIcon: BottomNavigationIconWidget(
               iconPath: "activeAccountIcon.png",
             ),
-            label: ("Account"),
+            label: (AppLocalizations.of(context)!.account),
           ),
         ],
         currentIndex: Provider.of<ProviderData>(context).index,

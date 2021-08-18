@@ -30,7 +30,9 @@ class _SuggestedLoadScreenState extends State<SuggestedLoadScreen> {
   runSuggestedLoadApi(int i) async {
     var suggestedLoadDataList = await runSuggestedLoadApiWithPageNo(i);
     for (var suggestedLoadData in suggestedLoadDataList){
+      setState(() {
         data.add(suggestedLoadData);
+      });
     }
     setState(() {
       loading = false;

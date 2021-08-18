@@ -37,7 +37,7 @@ class OngoingCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: (){
-        Get.to(() => OnGoingLoadDetails(loadALlDataModel: loadAllDataModel,));
+        Get.to(() => OnGoingLoadDetails(loadALlDataModel: loadAllDataModel,trackIndicator: false,));
       },
       child: Container(
         margin: EdgeInsets.only(bottom: space_3),

@@ -1,7 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:liveasy/screens/PostLoadScreens/PostLoadScreenLoadDetails.dart';
-import 'package:get/get.dart';
 import 'package:liveasy/translations/l10n.dart';
 
 //In provider data class variables that will be required across different screens are declared . These variables are updated by defining respective function for them.
@@ -105,10 +103,16 @@ class ProviderData extends ChangeNotifier {
 
   // variables for accountVerification
   File? profilePhotoFile;
+  File? addressProofFrontPhotoFile;
+  File? addressProofBackPhotoFile;
   File? panFrontPhotoFile;
-  File? panBackPhotoFile;
-  File? addressProofPhotoFile;
   File? companyIdProofPhotoFile;
+
+  String? profilePhoto64;
+  String? addressProofFrontPhoto64;
+  String? addressProofBackPhoto64;
+  String? panFrontPhoto64;
+  String? companyIdProofPhoto64;
 
   // variables for login pages
 
@@ -189,23 +193,48 @@ class ProviderData extends ChangeNotifier {
     notifyListeners();
   }
 
+  updateProfilePhotoStr(String newStr) {
+    profilePhoto64 = newStr;
+    notifyListeners();
+  }
+
+  updateAddressProofFrontPhoto(File newFile) {
+    addressProofFrontPhotoFile = newFile;
+    notifyListeners();
+  }
+
+  updateAddressProofFrontPhotoStr(String newStr) {
+    addressProofFrontPhoto64 = newStr;
+    notifyListeners();
+  }
+
+  updateAddressProofBackPhoto(File newFile) {
+    addressProofBackPhotoFile = newFile;
+    notifyListeners();
+  }
+
+  updateAddressProofBackPhotoStr(String newStr) {
+    addressProofBackPhoto64 = newStr;
+    notifyListeners();
+  }
+
   updatePanFrontPhoto(File newFile) {
     panFrontPhotoFile = newFile;
     notifyListeners();
   }
 
-  updatePanBackPhoto(File newFile) {
-    panBackPhotoFile = newFile;
-    notifyListeners();
-  }
-
-  updateAddressProofPhoto(File newFile) {
-    addressProofPhotoFile = newFile;
+  updatePanFrontPhotoStr(String newStr) {
+    panFrontPhoto64 = newStr;
     notifyListeners();
   }
 
   updateCompanyIdProofPhoto(File newFile) {
     companyIdProofPhotoFile = newFile;
+    notifyListeners();
+  }
+
+  updateCompanyIdProofPhotoStr(String newStr) {
+    companyIdProofPhoto64 = newStr;
     notifyListeners();
   }
 

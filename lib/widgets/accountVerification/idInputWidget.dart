@@ -32,7 +32,7 @@ class IdInputWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "(Aadhar Card/Driving License/Ration Card\n/Voter ID/Electricity/GST)",
+                "(Aadhaar Card/Driving License/Ration Card\n/Voter ID/Electricity/GST)",
                 style: TextStyle(fontSize: size_6, color: grey),
               ),
               SizedBox(
@@ -43,18 +43,25 @@ class IdInputWidget extends StatelessWidget {
                 children: [
                   RoundedImageDisplay(
                     text: "Id Front",
-                    onPressed: () {
-                      getImageFromCamera(providerData
-                          .updatePanFrontPhoto); //TODO:Change Name in provider accordingly
+                    onPressed: () async {
+                      await getImageFromCamera(
+                          providerData.updateAddressProofFrontPhoto,
+                          providerData.updateAddressProofFrontPhotoStr,
+                          context
+                      );
                     },
-                    imageFile: providerData.panFrontPhotoFile,
+                    imageFile: providerData.addressProofFrontPhotoFile,
                   ),
                   RoundedImageDisplay(
                     text: "Id Back",
-                    onPressed: () {
-                      getImageFromCamera(providerData.updatePanBackPhoto);
+                    onPressed: () async {
+                      await getImageFromCamera(
+                          providerData.updateAddressProofBackPhoto,
+                          providerData.updateAddressProofBackPhotoStr,
+                          context
+                      );
                     },
-                    imageFile: providerData.panBackPhotoFile,
+                    imageFile: providerData.addressProofBackPhotoFile,
                   ),
                 ],
               ),
@@ -78,10 +85,14 @@ class IdInputWidget extends StatelessWidget {
               Center(
                 child: RoundedImageDisplay(
                   text: "Pan Front",
-                  onPressed: () {
-                    getImageFromCamera(providerData.updateAddressProofPhoto);
+                  onPressed: () async {
+                    await getImageFromCamera(
+                        providerData.updatePanFrontPhoto,
+                        providerData.updatePanFrontPhotoStr,
+                        context
+                    );
                   },
-                  imageFile: providerData.addressProofPhotoFile,
+                  imageFile: providerData.panFrontPhotoFile,
                 ),
               ),
             ],

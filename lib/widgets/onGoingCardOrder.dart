@@ -86,6 +86,7 @@ class OngoingCardOrders extends StatelessWidget {
               driverPhoneNum: driverPhoneNum,
               driverName: driverName,
               transporterName: companyName,
+              trackApproved: true,
             ));
           },
           child: Card(

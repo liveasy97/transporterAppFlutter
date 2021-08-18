@@ -9,6 +9,7 @@ import 'package:liveasy/screens/TransporterOrders/biddingScreenTransporterSide.d
 import 'package:provider/provider.dart';
 import 'TransporterOrders/deliveredScreenOrders.dart';
 import 'TransporterOrders/onGoingScreenOrders.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrdersScreen extends StatefulWidget {
   @override
@@ -38,17 +39,17 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   OrderScreenNavigationBarButton(
-                    text: 'Bids',
+                    text: AppLocalizations.of(context)!.bids,
                     value: 0,
                     pageController: pageController,
                   ),
                   OrderScreenNavigationBarButton(
-                    text: 'On-going',
+                    text: AppLocalizations.of(context)!.on_going,
                     value: 1,
                     pageController: pageController,
                   ),
                   OrderScreenNavigationBarButton(
-                    text: 'Completed',
+                    text: AppLocalizations.of(context)!.completed,
                     value: 2,
                     pageController: pageController,
                   )

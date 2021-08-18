@@ -3,6 +3,7 @@ import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/radius.dart';
 import 'package:liveasy/constants/spaces.dart';
+import 'package:liveasy/functions/textOverFlow.dart';
 import 'package:liveasy/widgets/buttons/backButtonWidget.dart';
 import 'package:liveasy/widgets/buttons/callButton.dart';
 import 'package:liveasy/widgets/buttons/completedButton.dart';
@@ -29,6 +30,7 @@ class ShipperDetails extends StatefulWidget {
   String? driverPhoneNum;
   String? driverName;
   String? transporterName;
+  bool? trackApproved;
 
   ShipperDetails(
       {Key? key,
@@ -48,7 +50,8 @@ class ShipperDetails extends StatefulWidget {
       this.transporterPhoneNum,
       this.driverPhoneNum,
       this.driverName,
-      this.transporterName})
+      this.transporterName,
+      this.trackApproved})
       : super(key: key);
 
   @override
@@ -105,7 +108,7 @@ class _ShipperDetailsState extends State<ShipperDetails> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            TrackButton(truckApproved: false),
+                            TrackButton(truckApproved: widget.trackApproved!),
                             CallButton(
                               directCall: false,
                               transporterPhoneNum: widget.transporterPhoneNum,
@@ -132,8 +135,9 @@ class _ShipperDetailsState extends State<ShipperDetails> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       LoadLabelValueRowTemplate(
-                          value:
-                              "${widget.loadingPoint}-${widget.unloadingPoint}",
+                          value: textOverflowEllipsis(
+                              "${widget.loadingPoint}-${widget.unloadingPoint}",20
+                          ),
                           label: 'Location'),
                       LoadLabelValueRowTemplate(
                           value: widget.vehicleNo, label: 'Truck no.'),
@@ -152,7 +156,8 @@ class _ShipperDetailsState extends State<ShipperDetails> {
               SizedBox(
                 height: space_2,
               ),
-              CompletedButtonOrders(
+              widget.trackApproved == false ? Container()
+                  :CompletedButtonOrders(
                 bookingId: widget.bookingId,
                 fontSize: size_9,
               )

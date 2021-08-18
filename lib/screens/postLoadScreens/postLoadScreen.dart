@@ -9,7 +9,7 @@ import 'package:liveasy/screens/myLoadPages/onGoingScreen.dart';
 import 'package:liveasy/widgets/Header.dart';
 import 'package:liveasy/widgets/OrderScreenNavigationBarButton.dart';
 import 'package:liveasy/widgets/buttons/postLoadButton.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class PostLoadScreen extends StatefulWidget {
@@ -33,20 +33,20 @@ class _PostLoadScreenState extends State<PostLoadScreen> {
           padding: EdgeInsets.fromLTRB(space_4, space_4, space_4, space_2),
           child: Column(
             children: [
-              Header(reset: false, text: 'Loads', backButton: false),
+              Header(reset: false, text: AppLocalizations.of(context)!.loads, backButton: false),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   OrderScreenNavigationBarButton(
-                      text: 'My Loads',
+                      text: AppLocalizations.of(context)!.my_loads,
                       value: 0,
                       pageController: pageController),
                   OrderScreenNavigationBarButton(
-                      text: 'On-going',
+                      text: AppLocalizations.of(context)!.on_going,
                       value: 1,
                       pageController: pageController),
                   OrderScreenNavigationBarButton(
-                      text: 'Completed',
+                      text: AppLocalizations.of(context)!.completed,
                       value: 2,
                       pageController: pageController)
                 ],

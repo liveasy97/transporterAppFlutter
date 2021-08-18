@@ -105,6 +105,7 @@ class _OngoingScreenState extends State<OngoingScreen> {
                 ),
               )
             : ListView.builder(
+                padding: EdgeInsets.only(bottom: space_15),
                 itemCount: modelList.length,
                 itemBuilder: (context, index) {
                   return FutureBuilder(

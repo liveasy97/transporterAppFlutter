@@ -30,6 +30,7 @@ class DeliveredCardOrders extends StatelessWidget {
   final String productType;
   final String vehicleNo;
   final String unitValue;
+  final String? bookingId;
 
   // final String imei;
 
@@ -54,91 +55,117 @@ class DeliveredCardOrders extends StatelessWidget {
       required this.truckType,
       required this.noOfTrucks,
       required this.productType,
+        required this.bookingId,
       required this.unitValue});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Card(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.all(space_2),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      LoadLabelValueRowTemplate(
-                          value: startedOn, label: 'Booking date'),
-                    ],
-                  ),
-                  SizedBox(
-                    height: space_2,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      LoadEndPointTemplate(
-                          text: loadingPoint, endPointType: 'loading'),
-                      Container(
-                          padding: EdgeInsets.only(left: 2),
-                          height: space_6,
-                          width: space_12,
-                          child: CustomPaint(
-                            foregroundPainter: LinePainter(),
-                          )),
-                      LoadEndPointTemplate(
-                          text: unloadingPoint, endPointType: 'unloading'),
-                    ],
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: space_2),
-                    child: Column(
+      child: GestureDetector(
+        onTap: () {
+          Get.to(ShipperDetails(
+            truckType: truckType,
+            noOfTrucks: noOfTrucks,
+            productType: productType,
+            loadingPoint: loadingPoint,
+            unloadingPoint: unloadingPoint,
+            rate: rate,
+            vehicleNo: vehicleNo,
+            shipperPosterCompanyApproved: companyApproved,
+            shipperPosterCompanyName: companyName,
+            shipperPosterLocation: posterLocation,
+            shipperPosterName: posterName,
+            transporterPhoneNum: transporterPhoneNumber,
+            driverPhoneNum: driverPhoneNum,
+            driverName: driverName,
+            transporterName: companyName,
+            bookingId: bookingId == null ? "NA" : bookingId!,
+            trackApproved: false,
+          ));
+        },
+        child: Card(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.all(space_2),
+                child: Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         LoadLabelValueRowTemplate(
                             value: endedOn, label: 'Completed date'),
-                        LoadLabelValueRowTemplate(
-                            value: "Rs.$rate/$unitValue", label: 'Price'),
+                        Icon(Icons.arrow_forward_ios)
+                      ],
+
+                    ),
+                    SizedBox(
+                      height: space_2,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        LoadEndPointTemplate(
+                            text: loadingPoint, endPointType: 'loading'),
+                        Container(
+                            padding: EdgeInsets.only(left: 2),
+                            height: space_6,
+                            width: space_12,
+                            child: CustomPaint(
+                              foregroundPainter: LinePainter(),
+                            )),
+                        LoadEndPointTemplate(
+                            text: unloadingPoint, endPointType: 'unloading'),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: space_2,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+                    Container(
+                      margin: EdgeInsets.only(top: space_2),
+                      child: Column(
                         children: [
-                          Container(
-                            margin: EdgeInsets.only(right: space_1),
-                            child: Image(
-                                height: 16,
-                                width: 23,
-                                color: black,
-                                image: AssetImage(
-                                    'assets/icons/buildingIcon.png')),
-                          ),
-                          Text(
-                            companyName,
-                            style: TextStyle(
-                              color: liveasyBlackColor,
-                              fontWeight: mediumBoldWeight,
-                            ),
-                          )
+                          LoadLabelValueRowTemplate(
+                              value: startedOn, label: 'Booking date'),
+                          LoadLabelValueRowTemplate(
+                              value: "Rs.$rate/$unitValue", label: 'Price'),
                         ],
                       ),
-                      SizedBox(
-                        height: space_2,
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                    SizedBox(
+                      height: space_2,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(right: space_1),
+                              child: Image(
+                                  height: 16,
+                                  width: 23,
+                                  color: black,
+                                  image: AssetImage(
+                                      'assets/icons/buildingIcon.png')),
+                            ),
+                            Text(
+                              companyName,
+                              style: TextStyle(
+                                color: liveasyBlackColor,
+                                fontWeight: mediumBoldWeight,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: space_2,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

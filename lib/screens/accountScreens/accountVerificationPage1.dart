@@ -11,6 +11,7 @@ import 'package:liveasy/widgets/headingTextWidget.dart';
 import 'package:liveasy/widgets/buttons/helpButton.dart';
 import 'package:liveasy/widgets/accountVerification/idInputWidget.dart';
 import 'package:liveasy/widgets/accountVerification/profilePhoto.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 class AccountVerificationPage1 extends StatefulWidget {
@@ -20,6 +21,11 @@ class AccountVerificationPage1 extends StatefulWidget {
 }
 
 class _AccountVerificationPage1State extends State<AccountVerificationPage1> {
+  @override
+  void initState() {
+    super.initState();
+    Permission.camera.request();
+  }
   @override
   Widget build(BuildContext context) {
     var providerData = Provider.of<ProviderData>(context);
@@ -45,8 +51,12 @@ class _AccountVerificationPage1State extends State<AccountVerificationPage1> {
               ),
               Center(
                 child: GestureDetector(
-                  onTap: () {
-                    getImageFromCamera(providerData.updateProfilePhoto);
+                  onTap: () async {
+                    await getImageFromCamera(
+                        providerData.updateProfilePhoto,
+                        providerData.updateProfilePhotoStr,
+                        context
+                    );
                   },
                   child: ProfilePhotoWidget(
                     providerData: providerData,
@@ -60,10 +70,10 @@ class _AccountVerificationPage1State extends State<AccountVerificationPage1> {
                 providerData: providerData,
               ),
               ElevatedButtonWidget(
-                  condition: providerData.profilePhotoFile != null &&
-                      providerData.panFrontPhotoFile != null &&
-                      providerData.panBackPhotoFile != null &&
-                      providerData.addressProofPhotoFile != null,
+                  condition: providerData.profilePhoto64 != null &&
+                      providerData.addressProofFrontPhoto64 != null &&
+                      providerData.addressProofBackPhoto64 != null &&
+                      providerData.panFrontPhoto64 != null,
                   text: "Next",
                   onPressedConditionTrue: () {
                     Get.to(() => AccountVerificationPage2());

@@ -107,6 +107,7 @@ class _DeliveredScreenState extends State<DeliveredScreen> {
                 ),
               )
             : ListView.builder(
+                padding: EdgeInsets.only(bottom: space_15),
                 controller: scrollController,
                 itemCount: modelList.length,
                 itemBuilder: (context, index) {

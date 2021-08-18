@@ -18,14 +18,15 @@ class RoundedImageDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 80,
-      width: 127,
+      width: 132,
       child: OutlinedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(white),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(space_3),
-            ))),
+            ))
+        ),
         child: Container(
           decoration: imageFile != null
               ? BoxDecoration(

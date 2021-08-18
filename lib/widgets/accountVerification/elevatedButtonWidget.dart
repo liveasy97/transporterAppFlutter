@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/fontWeights.dart';
@@ -42,10 +41,7 @@ class ElevatedButtonWidget extends StatelessWidget {
             ),
             onPressed: condition
                 ? onPressedConditionTrue
-                : () {
-                    Get.snackbar("Fill All Required Details", "",
-                        snackPosition: SnackPosition.BOTTOM);
-                  },
+                : null,
           )),
     );
   }

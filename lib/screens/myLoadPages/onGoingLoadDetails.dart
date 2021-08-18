@@ -13,8 +13,9 @@ import 'package:liveasy/widgets/newRowTemplate.dart';
 class OnGoingLoadDetails extends StatelessWidget {
 
   final Map loadALlDataModel;
+  bool? trackIndicator = false;
 
-  OnGoingLoadDetails({required this.loadALlDataModel});
+  OnGoingLoadDetails({required this.loadALlDataModel,this.trackIndicator});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class OnGoingLoadDetails extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                TrackButton(truckApproved: true,),
+                                TrackButton(truckApproved: trackIndicator!,),
                                 CallButton(
                                   directCall: false,
                                   driverPhoneNum:  loadALlDataModel['driverPhoneNum'],

@@ -73,6 +73,7 @@ class DeliveredScreenOrders extends StatelessWidget {
                             driverName: snapshot.data['driverName'],
                             startedOn: snapshot.data['startedOn'],
                             endedOn: snapshot.data['endedOn'],
+                            bookingId: snapshot.data['bookingId'],
 
                             // imei: snapshot.data['imei'],
                             // phoneNum: snapshot.data['phoneNum'],

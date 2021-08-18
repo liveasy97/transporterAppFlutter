@@ -3,5 +3,17 @@
   "search": "खोजें",
   "seeAll": "सभी",
   "welcome": "आपका स्वागत है।",
-  "selectLanguage": "भाषा का चयन करें।"
+  "selectLanguage": "भाषा का चयन करें।",
+
+  "home": "होम",
+  "my_truck": "मेरा ट्रक",
+  "my_loads": "मेरा माल",
+  "account": "खाता",
+
+  "loads": "माल",
+  "on_going": "जारी है",
+  "completed": "सम्पूर्ण",
+
+  "bids":"बोली"
+
 }
