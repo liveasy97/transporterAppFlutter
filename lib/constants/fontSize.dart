@@ -15,3 +15,6 @@ const double size_12 = 24;
 double size_13 = 26;
 double size_14 = 28;
 double size_15 = 30;
+double size_16 = 80;
+double size_17 = 146;
+double size_18 = 309;

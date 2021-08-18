@@ -16,6 +16,8 @@ import 'package:liveasy/constants/fontSize.dart';
 import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/constants/color.dart';
 
+
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -23,6 +25,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   HudController hudController = Get.put(HudController());
+
   void initState() {
     super.initState();
     hudController.updateHud(
@@ -48,6 +51,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
+    
     if (permission1 == PermissionStatus.denied ||
         permission1 == PermissionStatus.restricted) {
       return LocationDisabledScreen();

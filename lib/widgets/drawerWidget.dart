@@ -17,6 +17,8 @@ import 'package:liveasy/screens/languageSelectionScreen.dart';
 import 'package:liveasy/widgets/alertDialog/addDriverAlertDialog.dart';
 import 'package:provider/provider.dart';
 
+import 'alertDialog/logoutAlertDialog.dart';
+
 class DrawerWidget extends StatelessWidget {
   final String mobileNum;
   final String userName;
@@ -196,51 +198,13 @@ class DrawerWidget extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // FirebaseAuth.instance.signOut();
-                        // Get.offAll(LoginScreen());
                         showDialog(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                            contentPadding: EdgeInsets.fromLTRB(space_6, space_7, space_6, space_4),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(radius_2 - 2)),
-                            ),
-                            title: const Text('Are you sure? You want to logout', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, )),
-                            //content: const Text('Confirm?'),
-                            actions: <Widget>[
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) {
+                              return logoutAlertDialogBox();
+                            });
 
-                              ElevatedButton(
-
-                                onPressed: () { FirebaseAuth.instance.signOut();
-                        Get.offAll(LoginScreen());
-                        },
-                                child: Text('Ok'),
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                    side: BorderSide(color: darkBlueColor),
-                                  )),
-                                  backgroundColor:
-                                  MaterialStateProperty.all<Color>(darkBlueColor),
-                                ),
-                              ),
-                              ElevatedButton(
-                                onPressed: () => Navigator.pop(context, 'Cancel'),
-                                child: const Text('Cancel',style: TextStyle(color: darkBlueColor)),
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                      side: BorderSide(color: darkBlueColor),
-                                  )),
-                                  backgroundColor:
-                                  MaterialStateProperty.all<Color>(statusBarColor),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
                       },
                       child: ListTile(
                         title: Text("Logout",

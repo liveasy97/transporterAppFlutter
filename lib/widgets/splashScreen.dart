@@ -6,6 +6,7 @@ import 'package:liveasy/constants/spaces.dart';
 import 'package:liveasy/screens/LoginScreens/loginScreen.dart';
 import 'package:get/get.dart';
 
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -14,14 +15,22 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+
+
+
   @override
   void initState() {
-    Timer(Duration(seconds: 3), () => Get.off(() => LoginScreen()));
+
     super.initState();
+    Timer(Duration(seconds: 3), () => Get.off(() => LoginScreen()));
+
+
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: white,
       body: Padding(
