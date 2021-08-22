@@ -63,6 +63,8 @@ dependencies:
   flutter_easyloading: ^3.0.0
   marquee: ^2.2.0
   connectivity:
+  flutter_gifimage: ^1.0.0
+
 
 
 dev_dependencies:
@@ -88,6 +90,7 @@ flutter:
     - assets/icons/
     - assets/icons/navigationIcons/
     - assets/images/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

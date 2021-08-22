@@ -61,7 +61,7 @@ class logoutAlertDialogBox extends StatelessWidget {
           width:2,
         ),
         SizedBox(
-          width:size_16,
+          width:size_16 ,
           height: size_15 + 1,
         child: ElevatedButton(
           onPressed: () => Navigator.pop(context, 'Cancel'),

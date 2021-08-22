@@ -9,7 +9,7 @@ import 'package:liveasy/screens/LoginScreens/loginScreen.dart';
 import 'package:get/get.dart';
 import 'package:liveasy/screens/navigationScreen.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:liveasy/NoInternet.dart';
+
 
 class SplashScreenToGetTransporterData extends StatefulWidget {
   final String mobileNum;
@@ -23,18 +23,17 @@ class SplashScreenToGetTransporterData extends StatefulWidget {
 class _SplashScreenToGetTransporterDataState
     extends State<SplashScreenToGetTransporterData> {
 
-
-
   @override
   void initState() {
     super.initState();
+    getData();
 
-
-        getData();
 
   }
 
+
   getData() async{
+
     String? transporterId = await runTransporterApiPost(mobileNum: widget.mobileNum);
     if (transporterId != null){
       Timer(Duration(milliseconds: 1000), () => Get.off(() => NavigationScreen()));
@@ -54,7 +53,7 @@ class _SplashScreenToGetTransporterDataState
 
   @override
   Widget build(BuildContext context) {
-
+   
     return Scaffold(
       backgroundColor: statusBarColor,
       body: SafeArea(
@@ -75,13 +74,13 @@ class _SplashScreenToGetTransporterDataState
                       image: AssetImage("assets/images/logoSplashScreen.png"),
                       height: space_12,
                     ),
-                    SizedBox(
-                      height: space_3,
-                    ),
-                    Image(
-                      image: AssetImage("assets/images/tagLine.png"),
-                      height: space_3,
-                    )
+                    // SizedBox(
+                    //   height: space_3,
+                    // ),
+                    // Image(
+                    //   image: AssetImage("assets/images/tagLine.png"),
+                    //   height: space_3,
+                    // )
                   ],
                 ),
               ),

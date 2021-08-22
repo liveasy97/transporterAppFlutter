@@ -1,4 +1,8 @@
+import 'dart:async';
+
+import 'package:connectivity/connectivity.dart';
 import 'package:geolocator/geolocator.dart';
+
 import 'package:liveasy/constants/fontWeights.dart';
 import 'package:liveasy/constants/radius.dart';
 import 'package:liveasy/controller/hudController.dart';
@@ -25,13 +29,33 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   HudController hudController = Get.put(HudController());
+  // var _connectionStatus = "Unknown";
+  // late Connectivity connectivity;
+  // late StreamSubscription<ConnectivityResult> subscription;
 
   void initState() {
     super.initState();
     hudController.updateHud(
         false); // so that if user press the back button in between verification verifying stop
     getLocationPermission();
+    // connectivity = new Connectivity();
+    // subscription = connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+    //   _connectionStatus = result.toString();
+    //   print(_connectionStatus);
+    //   if(result == ConnectivityResult.mobile || result == ConnectivityResult.wifi){
+    //     //build(context);
+    //     setState(() {});
+    //   }
+    //   else if(result == ConnectivityResult.none){
+    //     Get.to(NoInternet());
+    //   }
+    // });
   }
+  // @override
+  // void dispose(){
+  //   subscription.cancel();
+  //   super.dispose();
+  // }
 
   PermissionStatus? permission1;
   Position? userPosition;
@@ -52,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
 
-
+    // connectivity.checkConnectivity();
     
     if (permission1 == PermissionStatus.denied ||
         permission1 == PermissionStatus.restricted) {
