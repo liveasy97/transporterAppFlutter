@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
           children: [
             SizedBox(
-              height: space_2,
+              height: space_4,
             ),
             Image(image: AssetImage("assets/images/liveasyTruck.png")),
 

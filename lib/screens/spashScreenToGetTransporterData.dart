@@ -63,6 +63,9 @@ class _SplashScreenToGetTransporterDataState
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                height: space_4,
+              ),
               Image(image: AssetImage("assets/images/liveasyTruck.png")),
               SizedBox(
                 height: space_2,
