@@ -77,9 +77,11 @@ class _MyTruckCardState extends State<MyTruckCard> {
 
 
 
+
     String truckType = truckFilterVariables.truckTypeValueList.contains(widget.truckData.truckType)
         ? truckFilterVariables.truckTypeTextList[truckFilterVariables.truckTypeValueList.indexOf(widget.truckData.truckType)]
         : 'NA';
+
 
     Map<String, Color> statusColor = {
       'Available': liveasyGreen,
@@ -110,6 +112,41 @@ class _MyTruckCardState extends State<MyTruckCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
+              Align(
+                alignment: Alignment.topRight,
+             child: PopupMenuButton(
+                itemBuilder: (context)=>[
+          PopupMenuItem<int>(
+          value: 0,
+          child: RichText(
+            text: TextSpan(
+              children: [
+                WidgetSpan(
+                  child: Icon(Icons.edit, size: 14),
+                ),
+                TextSpan(
+                  text: " Edit", style: TextStyle(fontFamily: 'montserrat', fontWeight: fontWeight500, color: black),
+                ),
+              ],
+            ),
+          )
+        ),
+          PopupMenuItem<int>(
+            value: 1,
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  WidgetSpan(
+                    child: Icon(Icons.delete, size: 14),
+                  ),
+                  TextSpan(
+                    text: " Delete", style: TextStyle(fontFamily: 'montserrat', fontWeight: fontWeight500, color: black),
+                  ),
+                ],
+              ),
+            )
+          ),
+          ], onSelected: (item)=>SelectedItem(context,item),),),
               verified!
                   ?
               Column(
@@ -233,5 +270,14 @@ class _MyTruckCardState extends State<MyTruckCard> {
         ),
       ),
     );
+  }
+}
+
+SelectedItem(BuildContext context, Object? item) {
+  switch(item){
+    case 0: Get.to(TruckDescriptionScreen(truckNumber: '', truckId: '',));
+             break;
+    case 1: print("delete");
+             break;
   }
 }
