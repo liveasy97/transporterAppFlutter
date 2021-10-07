@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:liveasy/constants/borderWidth.dart';
 import 'package:liveasy/constants/color.dart';
 import 'package:liveasy/constants/spaces.dart';
+import 'package:liveasy/controller/tokenMMIController.dart';
 import 'package:liveasy/controller/transporterIdController.dart';
 import 'package:liveasy/functions/loadApis/runFindLoadApiGet.dart';
+import 'package:liveasy/functions/mmiUtils/autoFillMMI.dart';
 import 'package:liveasy/providerClass/providerData.dart';
 import 'package:liveasy/widgets/availableLoadsTextWidget.dart';
 import 'package:liveasy/widgets/buttons/filterButton.dart';
@@ -28,9 +30,16 @@ class _FindLoadScreenState extends State<FindLoadScreen> {
   var findLoadApiData;
   TransporterIdController transporterIdController =
       Get.find<TransporterIdController>();
-
+  @override
+  void initState() {
+    super.initState();
+    getMMIToken();
+  }
   @override
   Widget build(BuildContext context) {
+    if(Get.isRegistered<TokenMMIController>()){
+      Get.find<TokenMMIController>();
+    }else{Get.put(TokenMMIController());}
     var providerData = Provider.of<ProviderData>(context, listen: false);
     if (Provider.of<ProviderData>(context).loadingPointCityFindLoad != "") {
       controller1 = TextEditingController(

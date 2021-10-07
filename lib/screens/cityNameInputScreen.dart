@@ -20,6 +20,11 @@ class CityNameInputScreen extends StatefulWidget {
 }
 
 class _CityNameInputScreenState extends State<CityNameInputScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getMMIToken();
+  }
   var locationCard;
   TextEditingController controller = TextEditingController();
 
