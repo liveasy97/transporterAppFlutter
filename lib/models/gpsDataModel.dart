@@ -1,5 +1,3 @@
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-
 class GpsDataModel {
   String? speed;
   double? lat;
@@ -10,7 +8,8 @@ class GpsDataModel {
   String? direction;
   String? id;
   String? address;
-
+  String? timestamp;
+  String? gpsTime;
   GpsDataModel(
       {this.speed,
         this.id,
@@ -20,5 +19,7 @@ class GpsDataModel {
         this.deviceName,
         this.lng,
         this.powerValue,
+        this.timestamp,
+        this.gpsTime,
         this.direction});
 }

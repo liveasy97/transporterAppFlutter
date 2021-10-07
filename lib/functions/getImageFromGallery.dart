@@ -17,7 +17,7 @@ Future getImageFromGallery(var functionToUpdate, var strToUpdate, var context) a
       functionToUpdate(File(pickedFile.path));
       strToUpdate(img64);
       print("Picked file is $pickedFile");
-      print("Picked file path is ${pickedFile!.path}");
+      print("Picked file path is ${pickedFile.path}");
       print("Base64 is $img64");
     } else {
       if(await Permission.camera.isPermanentlyDenied) {
@@ -28,7 +28,7 @@ Future getImageFromGallery(var functionToUpdate, var strToUpdate, var context) a
         functionToUpdate(File(pickedFile.path));
         strToUpdate(img64);
         print("Picked file is $pickedFile");
-        print("Picked file path is ${pickedFile!.path}");
+        print("Picked file path is ${pickedFile.path}");
         print("Base64 is $img64");
       } else {
         showDialog(
@@ -44,7 +44,7 @@ Future getImageFromGallery(var functionToUpdate, var strToUpdate, var context) a
     functionToUpdate(File(pickedFile.path));
     strToUpdate(img64);
     print("Picked file is $pickedFile");
-    print("Picked file path is ${pickedFile!.path}");
+    print("Picked file path is ${pickedFile.path}");
     print("Base64 is $img64");
   }
 }

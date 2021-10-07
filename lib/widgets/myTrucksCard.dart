@@ -149,6 +149,7 @@ class _MyTruckCardState extends State<MyTruckCard> {
                               truckApproved: widget.truckData.truckApproved!,
                               phoneNo: widget.truckData.driverNum,
                               TruckNo: widget.truckData.truckNo,
+                              DriverName: widget.truckData.driverName,
                               imei: widget.truckData.imei,
                             )
                         ),

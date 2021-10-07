@@ -13,6 +13,7 @@ import 'package:liveasy/models/gpsDataModel.dart';
 import 'package:liveasy/screens/displayMap.dart';
 import 'package:liveasy/screens/displayMapUsingImei.dart';
 import 'package:liveasy/screens/historyScreen.dart';
+import 'package:liveasy/screens/trackScreen.dart';
 
 // ignore: must_be_immutable
 class TrackButton extends StatelessWidget {
@@ -21,8 +22,15 @@ class TrackButton extends StatelessWidget {
   Position? userLocation;
   String? transporterIDImei;
   String? TruckNo;
+  String? DriverName;
   String? imei;
-  TrackButton({required this.truckApproved, this.phoneNo, this.userLocation, this.TruckNo, this.imei});
+  TrackButton({
+    required this.truckApproved,
+    this.phoneNo,
+    this.userLocation,
+    this.TruckNo,
+    this.DriverName,
+    this.imei});
   final TransporterApiCalls transporterApiCalls = TransporterApiCalls();
 
   @override
@@ -67,10 +75,12 @@ class TrackButton extends StatelessWidget {
               // gpsDataController.updateGpsData(gpsData);
               EasyLoading.dismiss();
               Get.to(
-                DisplayHistory(
+                TrackScreen(
                   imei: transporterIDImei,
                   gpsData: gpsData,
                   TruckNo: TruckNo,
+                  driverName: DriverName,
+                  driverNum: phoneNo,
                 ),
               );
             }

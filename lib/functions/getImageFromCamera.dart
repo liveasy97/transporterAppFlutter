@@ -51,7 +51,7 @@ Future getImageFromCamera(
       functionToUpdate(File(pickedFile.path));
       strToUpdate(img64);
       print("Picked file is $pickedFile");
-      print("Picked file path is ${pickedFile!.path}");
+      print("Picked file path is ${pickedFile.path}");
       print("Base64 is $img64");
     } else {
       if (await Permission.camera.isPermanentlyDenied) {
@@ -62,7 +62,7 @@ Future getImageFromCamera(
         functionToUpdate(File(pickedFile.path));
         strToUpdate(img64);
         print("Picked file is $pickedFile");
-        print("Picked file path is ${pickedFile!.path}");
+        print("Picked file path is ${pickedFile.path}");
         print("Base64 is $img64");
       } else {
         showDialog(context: context, builder: (context) => PermissionDialog());
@@ -73,7 +73,7 @@ Future getImageFromCamera(
     var pickedFile = await picker.pickImage(source: ImageSource.camera);
     print("Picked file is $pickedFile");
     print("Picked file path is ${pickedFile!.path}");
-    final bytes = await Io.File(pickedFile!.path).readAsBytes();
+    final bytes = await Io.File(pickedFile.path).readAsBytes();
     String img64 = base64Encode(bytes);
     print("Base64 is $img64");
     functionToUpdate(File(pickedFile.path));

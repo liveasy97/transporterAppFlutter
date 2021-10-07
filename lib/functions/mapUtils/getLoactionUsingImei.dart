@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:liveasy/models/gpsDataModel.dart';
 import 'package:flutter_config/flutter_config.dart';
-import 'package:location/location.dart';
 import 'package:geocoding/geocoding.dart';
 
 class MapUtil {
@@ -12,7 +12,8 @@ class MapUtil {
     print("getLocationByImei got called with imei : $imei");
     try {
       print("$gpsApiUrl/$imei");
-      http.Response response = await http.get(Uri.parse("$gpsApiUrl/$imei"));
+      // http.Response response = await http.get(Uri.parse("$gpsApiUrl/transporter:a86719af-7104-4917-ac04-d712bc766cb3"));
+      http.Response response = await http.get(Uri.parse("$gpsApiUrl/355172100788965"));
       print(response.statusCode);
       print(response.body);
       var jsonData = await jsonDecode(response.body);
@@ -29,6 +30,8 @@ class MapUtil {
           print("Device Name is ${gpsDataModel.deviceName}");
           gpsDataModel.powerValue = json["powerValue"] != null ? json["powerValue"] : 'NA';
           gpsDataModel.direction = json["direction"] != null ? json["direction"] : 'NA';
+          gpsDataModel.timestamp = json["timeStamp"] != null ? json["timeStamp"] : 'NA';
+          gpsDataModel.gpsTime = json["gpsTime"] != null ? json["gpsTime"] : 'NA';
           LatLongList.add(gpsDataModel);
         }
         return LatLongList;

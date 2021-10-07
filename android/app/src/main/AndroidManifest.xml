@@ -88,7 +88,7 @@
             android:value="2" />
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCj7yNTVRIMNCJvPpj7Z30S1ByXkXoVucc"/>
+            android:value="AIzaSyBLJ8zwqBOM7yK_FYqGuKsiv8_huRvQwe8"/>
         <service
             android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmService"
             android:permission="android.permission.BIND_JOB_SERVICE"

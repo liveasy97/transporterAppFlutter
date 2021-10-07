@@ -50,7 +50,7 @@ class _DisplayHistoryState extends State<DisplayHistory> {
   PolylinePoints polylinePoints = PolylinePoints();
   late PointLatLng start;
   late PointLatLng end;
-  String googleAPiKey = "AIzaSyDHrt1nw0RAwa8iLE12Q2lenOglvXhHmKg";
+  String googleAPiKey = "AIzaSyBLJ8zwqBOM7yK_FYqGuKsiv8_huRvQwe8";
   @override
   void initState() {
     super.initState();
@@ -145,13 +145,13 @@ class _DisplayHistoryState extends State<DisplayHistory> {
     print("Start is $start");
     print("Start is $end");
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-        googleAPiKey,
-        // start,
-        // end,
-        thisone,
-        thistwo,
-        travelMode: TravelMode.driving,
-        wayPoints: [PolylineWayPoint(location: "Sabo, Yaba Lagos Nigeria")]
+      googleAPiKey,
+      start,
+      end,
+      // thisone,
+      // thistwo,
+      travelMode: TravelMode.driving,
+      // wayPoints: [PolylineWayPoint(location: "Sabo, Yaba Lagos Nigeria")]
     );
     print("Error message is ${result.errorMessage}");
     print("Result status is ${result.status}");
@@ -167,7 +167,7 @@ class _DisplayHistoryState extends State<DisplayHistory> {
           polylineId: id,
           color: Colors.blue,
           points: polylineCoordinates,
-          width: 5,
+          width: 3,
         );
         setState(() {
           polylines[id] = polyline;
