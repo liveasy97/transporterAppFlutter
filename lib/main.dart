@@ -41,13 +41,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _connectionStatus = "Unknown";
+  bool wasDisconnected = false;
   late Connectivity connectivity;
   late StreamSubscription<ConnectivityResult> subscription;
 
   @override
   void initState() {
-    checkConnection();
     super.initState();
+    checkConnection();
   }
 
   void checkConnection() {
@@ -59,9 +60,13 @@ class _MyAppState extends State<MyApp> {
       print(_connectionStatus);
       if (result == ConnectivityResult.mobile ||
           result == ConnectivityResult.wifi) {
-        Get.back();
         setState(() {});
+        if (wasDisconnected) {
+          wasDisconnected = false;
+          Get.back();
+        }
       } else if (result == ConnectivityResult.none) {
+        wasDisconnected = true;
         Get.defaultDialog(
             barrierDismissible: false,
             content: NoInternetConnection.noInternetDialogue(),

@@ -71,25 +71,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
     super.initState();
     this.initDynamicLinks();
     this.checkUpdate();
-    checkConnection();
-  }
-
-  Future<void> checkConnection() async {
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        Get.back();
-      }
-    } on SocketException catch (_) {
-      Get.defaultDialog(
-          barrierDismissible: false,
-          content: NoInternetConnection.noInternetDialogue(),
-          onWillPop: () async => false,
-          title: "\nNo Internet",
-          titleStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-          ));
-    }
   }
 
   void checkUpdate() async {
