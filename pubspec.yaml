@@ -79,7 +79,7 @@ dependencies:
   logger: ^1.1.0
   date_time_picker: ^2.1.0
   pull_to_refresh: ^2.0.0
-  connectivity_plus: ^1.1.0
+  connectivity_plus: ^2.2.0
   connectivity: ^3.0.6
   flutter_gifimage: ^1.0.0
   flutter_google_places: ^0.3.0

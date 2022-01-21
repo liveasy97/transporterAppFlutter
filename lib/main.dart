@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -41,14 +42,16 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _connectionStatus = "Unknown";
-  bool wasDisconnected = false;
+  bool isDisconnected = false;
   late Connectivity connectivity;
   late StreamSubscription<ConnectivityResult> subscription;
 
   @override
   void initState() {
     super.initState();
+    setState(() {});
     checkConnection();
+    connectivityChecker();
   }
 
   void checkConnection() {
@@ -60,13 +63,35 @@ class _MyAppState extends State<MyApp> {
       print(_connectionStatus);
       if (result == ConnectivityResult.mobile ||
           result == ConnectivityResult.wifi) {
-        setState(() {});
-        if (wasDisconnected) {
-          wasDisconnected = false;
+        if (isDisconnected) {
+          isDisconnected = false;
+          connectivityChecker();
           Get.back();
         }
-      } else if (result == ConnectivityResult.none) {
-        wasDisconnected = true;
+      } else {
+        if (!isDisconnected) {
+          isDisconnected = true;
+          Get.defaultDialog(
+              barrierDismissible: false,
+              content: NoInternetConnection.noInternetDialogue(),
+              onWillPop: () async => false,
+              title: "\nNo Internet",
+              titleStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+              ));
+        } else
+          connectivityChecker();
+      }
+    });
+  }
+
+  Future<void> connectivityChecker() async {
+    print("Checking internet...");
+    try {
+      await InternetAddress.lookup('google.com');
+    } on SocketException catch (_) {
+      isDisconnected = true;
+      Future.delayed(const Duration(milliseconds: 500), () {
         Get.defaultDialog(
             barrierDismissible: false,
             content: NoInternetConnection.noInternetDialogue(),
@@ -75,8 +100,8 @@ class _MyAppState extends State<MyApp> {
             titleStyle: TextStyle(
               fontWeight: FontWeight.bold,
             ));
-      }
-    });
+      });
+    }
   }
 
   @override
