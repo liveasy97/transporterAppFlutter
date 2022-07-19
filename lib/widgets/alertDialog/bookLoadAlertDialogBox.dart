@@ -387,13 +387,13 @@ class _BookLoadAlertDialogBoxState extends State<BookLoadAlertDialogBox> {
             children: [
               widget.loadDetailsScreenModel != null
                   ? ConfirmButtonSendRequest(
-                      selectedDriver: selectedDriver,
+                      selectedDriverName: selectedDriver,
                       loadDetailsScreenModel: widget.loadDetailsScreenModel,
                       truckId: selectedTruck,
                       directBooking: true,
                     )
                   : ConfirmButtonSendRequest(
-                      selectedDriver: selectedDriver,
+                      selectedDriverName: selectedDriver,
                       directBooking: false,
                       postLoadId: widget.postLoadId,
                       truckId: selectedTruck,

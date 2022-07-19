@@ -33,6 +33,11 @@ const Map<String, String> enUS = {
   "locationDetails": "Location Details",
   "bookNow": "Book Now",
   "share": "Share",
+  
+  "enterBookingDetails": "Enter Booking Details",
+  "selectTruck": "Select Truck",
+  "searchByNumber": "Search by Number",
+  "confirmBookingDetails": "Confirm Booking Details",
 
   "suggestedLoad": "Suggested Load",
   "seeAll": "see all",

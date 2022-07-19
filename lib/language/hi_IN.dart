@@ -29,6 +29,12 @@ const Map<String, String> hiIN = {
   "locationDetails": "स्थिति जानकारी",
   "bookNow": "अभी बुक करें",
   "share": "शेयर करें",
+  
+  "enterBookingDetails": "बुकिंग विवरण दर्ज करें",
+  "selectTruck": "ट्रक का चयन करें",
+  "searchByNumber": "नंबर द्वारा खोजें",
+  "confirmBookingDetails": "बुकिंग विवरण की पुष्टि करें",
+  
   "suggestedLoad": "सुझाव माल",
   "search": "खोजें",
   "seeAll": "सभी",
